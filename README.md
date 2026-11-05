@@ -66,6 +66,3 @@ successfully.
 Optimization](https://colab.research.google.com/drive/1HGVWZYVEHVGtoGw50TWS0g_vF2Lm18u5?usp=sharing)
 
 ------------------------------------------------------------------------
-
-**Phase 1 status:** Day 1 and Day 2 tasks completed. Days 3 and 4 are
-not documented here.
