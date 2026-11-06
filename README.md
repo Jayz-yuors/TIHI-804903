@@ -65,4 +65,12 @@ successfully.
 [Open Day 2 -- Regression Models &
 Optimization](https://colab.research.google.com/drive/1HGVWZYVEHVGtoGw50TWS0g_vF2Lm18u5?usp=sharing)
 
-------------------------------------------------------------------------
+### Day 3 -- Classification Fundamentals
+Task: Train an sklearn LogisticRegression model to perform binary classification and evaluate the predictions using a confusion matrix and ROC-AUC score.
+
+**Methodology and work completed**: 1. Loaded the Crop_recommendation.csv dataset containing soil metrics (Nitrogen, Phosphorus, Potassium, pH) and weather conditions (temperature, humidity, rainfall). 2. Transformed the dataset's multi-class label into a binary target variable (is_rice), assigning 1 for optimal rice conditions and 0 for all other crops. 3. Separated the input features (X) from the binary target variable (y). 4. Divided the dataset into an 80% training set and a 20% testing set using a fixed random state for reproducibility. 5. Applied StandardScaler to standardize the feature values, ensuring metrics with larger ranges (like rainfall) did not disproportionately influence the model over metrics with smaller ranges (like pH). 6. Initialized and trained a Logistic Regression model on the scaled training data. 7. Evaluated the model's performance on the unseen test set by generating probability predictions and calculating the Confusion Matrix and ROC-AUC score.
+
+**Observation**: The model achieved an overall accuracy of 97.73% and an ROC-AUC score of 0.9959. The Confusion Matrix (418 True Negatives, 12 True Positives, 7 False Negatives, 3 False Positives) indicates the model is highly effective at distinguishing suitable rice environments from unsuitable ones, maintaining a conservative threshold that minimizes costly false-positive recommendations.
+
+Google Colab notebook:
+[Open Day 3 -- Classification Fundamentals](https://colab.research.google.com/drive/1DeV-kwnKFGoRU7QBBlnjT11cfnNgIHRi?usp=sharing)
