@@ -74,3 +74,13 @@ Task: Train an sklearn LogisticRegression model to perform binary classification
 
 Google Colab notebook:
 [Open Day 3 -- Classification Fundamentals](https://colab.research.google.com/drive/1DeV-kwnKFGoRU7QBBlnjT11cfnNgIHRi?usp=sharing)
+
+
+### Day 4 -- Model Evaluation & Regularization
+Task: Add L2 regularization to the regression model and use GridSearchCV to find the best alpha penalty on tabular crop data to prevent overfitting.   
+
+**Methodology and work completed**:Loaded the master yield_df.csv dataset containing aggregated crop yield, weather, and pesticide data.Isolated the target variable (yield) and removed non-predictive tracking columns like the index and year.Applied One-Hot Encoding to convert categorical text variables (like crop names and regions) into numerical features suitable for regression.Divided the dataset into an 80% training set and a 20% testing set.Standardized the feature values using StandardScaler to ensure the L2 penalty would be applied fairly across metrics with wildly different scales.Initialized a Ridge regression model and defined a parameter grid of candidate alpha values ([0.01, 0.1, 1, 10, 100]).   Executed GridSearchCV with 5-fold cross-validation (cv=5) exclusively on the training data to isolate the optimal hyperparameter without exposing the final test set.   
+
+**Observation**: The GridSearch cross-validation successfully identified 10 as the optimal alpha penalty level. When evaluated on the unseen test data, the finalized model achieved an R-squared score of 0.7493, indicating that the model explains approximately 75% of the variance in crop yield. The Mean Squared Error (MSE) stabilized at 1,818,133,553.04, demonstrating that the L2 regularization effectively balanced the feature weights and mitigated overfitting.
+
+Google Colab notebook:[Open Day 4 -- Model Evaluation & Regularization](https://colab.research.google.com/drive/1IceI8NOJ2CMIAH19hnUNVgVd8F1bU3GX?usp=sharing)
