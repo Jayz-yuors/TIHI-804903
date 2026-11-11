@@ -128,5 +128,21 @@ Implemented a bifurcated training loop, explicitly activating net.train() for gr
 
 **Observation**: The regularization techniques successfully prevented the neural network from memorizing random statistical noise. While the unregularized Day 6 model overfit to reach 38.9% accuracy, the Day 7 architecture correctly identified the lack of correlative patterns in the synthetic data, maintaining a stable validation accuracy near the 25% baseline for 4-class classification. The train and validation loss curves remained tightly coupled (1.4136 vs 1.4092 at Epoch 50), mathematically proving that the Dropout and BatchNorm implementations successfully enforce generalization over memorization.
 
-Google Colab notebook:
+**Google Colab notebook**:
 [Open Day 7 -- Advanced Training Techniques](https://colab.research.google.com/drive/1GCuV0BxwQMNOozk5tFuBcspfs2oP2uqS?usp=sharing)
+
+
+### Day 8 -- PyTorch Data Pipelines
+**Task**: Write a custom PyTorch Dataset for tabular farm data, wrap it in a DataLoader to yield batches of 32, and verify the batch structures to enable memory-efficient training.
+
+**Methodology and work completed**: Loaded the Kaggle Crop Recommendation dataset containing 7 continuous soil and weather features alongside multi-class crop labels.
+Encoded the categorical crop labels into integer tensors to satisfy PyTorch's CrossEntropyLoss requirements.
+Divided the dataset into training and testing partitions prior to normalization. Fitted the StandardScaler exclusively on the training data and transformed the test data to strictly prevent data leakage.
+Engineered a custom FarmDS class inheriting from torch.utils.data.Dataset, implementing __len__ to define total dataset size and __getitem__ to fetch individual scaled feature and label tensor pairs directly from the T4 GPU (cuda).
+Initialized a DataLoader configured with batch_size=32 and shuffle=True to automatically randomize the data and segment it into manageable computational chunks per epoch.
+Executed an enumeration loop over the DataLoader to actively fetch and validate the structural integrity of the generated mini-batches.
+
+**Observation**: The custom data pipeline executed successfully, segmenting the processed dataset into randomized batches. The DataLoader consistently yielded feature tensors of shape [32, 7] and corresponding label tensors of shape [32]. This verifies that the pipeline correctly packages the 7 input metrics and handles the memory allocation properly, ensuring the GPU will not be bottlenecked when processing large-scale agricultural datasets in future phases.
+
+**Google Colab notebook**:
+[Open Day 8 -- PyTorch Data Pipelines](https://colab.research.google.com/drive/1ir4HaRuR5eWeyR57uoatGH09qMjXrZK3?usp=sharing)
