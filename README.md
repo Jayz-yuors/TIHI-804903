@@ -5,6 +5,12 @@
 
 **Students:** 1. Jay Keluskar 2. Kedar Sawant
 
+## DATASETS, EXPERIMENTAL RESULTS & MEDIA
+
+All datasets, processed data, model checkpoints, training visualizations, evaluation outputs, and video inference results generated throughout the project are organized in the following Google Drive folder.
+
+**[Open Project Datasets & Training Results — Google Drive](https://drive.google.com/drive/folders/1G-QHxYwqQloESivH13mVnO2MtdNoaZ19?usp=sharing)**
+
 ## PHASES
 
 ### 1. Phase -1: ML Fundamentals (Days 1 to 4)
