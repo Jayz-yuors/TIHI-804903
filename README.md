@@ -85,6 +85,7 @@ Task: Add L2 regularization to the regression model and use GridSearchCV to find
 
 Google Colab notebook:[Open Day 4 -- Model Evaluation & Regularization](https://colab.research.google.com/drive/1IceI8NOJ2CMIAH19hnUNVgVd8F1bU3GX?usp=sharing)
 
+### 2. Phase -2 : Deep Learning and PyTorch 
 
 ### Day 5 -- Introduction to PyTorch & Tensors
 **Task**: Port the linear regression model to PyTorch by converting data into tensors, moving them to the GPU (cuda), and utilizing Autograd (loss.backward()) to handle gradient calculations.
