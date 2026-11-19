@@ -147,3 +147,69 @@ Executed an enumeration loop over the DataLoader to actively fetch and validate 
 
 **Google Colab notebook**:
 [Open Day 8 -- PyTorch Data Pipelines](https://colab.research.google.com/drive/1ir4HaRuR5eWeyR57uoatGH09qMjXrZK3?usp=sharing)
+
+
+### 3. Phase 3: CNNs & Crop Disease (Days 9 to 11)
+
+**Phase objective:** Apply Convolutional Neural Networks (CNNs) and deep vision architectures to agricultural image classification. Explore spatial feature extraction, residual learning, transfer learning, and data augmentation for crop disease identification.
+
+#### Day 9 -- Spatial Feature Extraction with CNNs
+
+**Task:** Build a shallow Convolutional Neural Network (CNN) using PyTorch to classify ginger leaf images into healthy and diseased categories.
+
+**Methodology and work completed:**
+1. Loaded and organized the Master Ginger Dataset containing healthy and diseased ginger leaf images.
+2. Prepared image paths and generated binary labels, assigning 0 to Healthy and 1 to Diseased.
+3. Divided the dataset into stratified training, validation, and testing sets using a 70:15:15 split.
+4. Applied image preprocessing and augmentation, including resizing to 128 × 128, random horizontal flipping, and random rotation.
+5. Implemented a custom PyTorch Dataset and DataLoader for efficient image batching.
+6. Designed a shallow CNN architecture using convolutional layers, ReLU activation, MaxPooling, Adaptive Average Pooling, and fully connected layers.
+7. Trained the network using BCEWithLogitsLoss and the Adam optimizer.
+8. Evaluated the classifier using accuracy, classification report, confusion matrix, and individual image predictions.
+
+**Google Colab notebook:**
+
+[Open Day 9 -- Spatial Feature Extraction with CNNs](https://colab.research.google.com/drive/1i4EuWzqntaIKQexvtInReY5lYhlJskos?usp=sharing)
+
+---
+
+#### Day 10 -- Deep Vision Architectures & ResNet
+
+**Task:** Understand residual learning and implement lightweight ResNet blocks with identity shortcuts, integrating them into the Day 9 CNN classifier.
+
+**Methodology and work completed:**
+1. Studied the vanishing gradient problem in deeper neural networks and the motivation behind residual connections.
+2. Implemented a residual block using convolutional layers, Batch Normalization, and ReLU activation.
+3. Applied identity shortcuts to preserve input information through residual connections using the formulation F(x) + x.
+4. Implemented projection shortcuts using 1 × 1 convolutions to handle changes in feature-map dimensions and channel counts.
+5. Verified tensor shape compatibility between the residual branch and shortcut connection.
+6. Integrated residual blocks into a ResNet-inspired CNN architecture for ginger leaf disease classification.
+7. Trained and evaluated the model using training and validation metrics, classification reports, and confusion matrices.
+
+**Google Colab notebook:**
+
+[Open Day 10 -- Deep Vision Architectures & ResNet](https://colab.research.google.com/drive/182Wjeys4ow-Vpyn7kTv69BvYFYXvylrZ?usp=sharing)
+
+---
+
+#### Day 11 -- Transfer Learning & Data Augmentation
+
+**Task:** Implement transfer learning using an ImageNet-pretrained ResNet18 model to classify tomato leaf diseases through a newly configured classification layer and image augmentation.
+
+**Methodology and work completed:**
+1. Loaded the Tomato Leaf Disease dataset containing 10 tomato disease and healthy-leaf categories, organized into training and validation directories.
+2. Applied PyTorch `transforms.v2` for image preprocessing and augmentation, including RandomResizedCrop, ColorJitter, and RandomHorizontalFlip.
+3. Applied ImageNet mean and standard deviation normalization to the input images.
+4. Loaded ResNet18 with pretrained ImageNet weights and froze the backbone parameters.
+5. Replaced the original fully connected classification layer with a new output layer configured for 10 tomato disease classes.
+6. Trained the new classification layer using CrossEntropyLoss and the Adam optimizer on an NVIDIA T4 GPU.
+7. Evaluated model performance using training and validation loss, accuracy, classification reports, and confusion matrices.
+8. Achieved a best initial validation accuracy of 80.00% over three training epochs.
+9. Saved the trained ResNet18 model weights for future inference.
+
+**Observation:** The pretrained ResNet18 model achieved 80.00% validation accuracy during the initial three-epoch training run. The experiment demonstrated how ImageNet feature representations, combined with transfer learning and data augmentation, can be adapted to agricultural image classification with comparatively limited training effort.
+
+**Google Colab notebook:**
+
+[Open Day 11 -- Transfer Learning & Data Augmentation](https://colab.research.google.com/drive/1pR_K-yJAyLR3Ja5v88WuSkmwxXRwIa6i?usp=sharing)
+
